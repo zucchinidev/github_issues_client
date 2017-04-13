@@ -1,4 +1,4 @@
-# GithubIssuesClient
+# Github Issues Client in Elixir
 
 **TODO: Add description**
 
