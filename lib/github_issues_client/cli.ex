@@ -1,4 +1,5 @@
 defmodule GithubIssuesClient.CLI do
+  alias GithubIssuesClient.Http
   @default_count 4
   @moduledoc """
   Handle the command line parsing and the dispatch to the various functions
@@ -37,6 +38,6 @@ defmodule GithubIssuesClient.CLI do
   end
 
   def process({ user, project, _count }) do
-    GithubIssuesClient.fetch(user, project)
+    Http.fetch(user, project)
   end
 end
