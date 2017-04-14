@@ -39,13 +39,21 @@ defmodule GithubIssuesClient.CLI do
 
   def process({ user, project, _count }) do
     Http.fetch(user, project)
-      |> decode_reponse
+      |> decode_response
+      |> sort_into_ascending_order
   end
 
-  defp decode_reponse({ :ok, body}), do: body
-  defp decode_reponse({ :error, error}) do
+  def decode_response({ :ok, body}), do: body
+  def decode_response({ :error, error}) do
     { _, message } = List.keyfind(error, "message", 0)
     IO.puts "Error fetching from Github: #{message}"
     System.halt(2)
+  end
+  
+  def sort_into_ascending_order(list_of_issues) do
+    Enum.sort list_of_issues,
+      fn issue_one, issue_two ->
+        Map.get(issue_one, "created_at") <= Map.get(issue_two, "created_at")
+      end
   end
 end
