@@ -10,7 +10,7 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :github_issues_client, key: :value
+config :github_issues_client, github_url: "https://api.github.com"
 #
 # And access this configuration in your application as:
 #
