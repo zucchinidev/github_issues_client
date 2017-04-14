@@ -39,5 +39,13 @@ defmodule GithubIssuesClient.CLI do
 
   def process({ user, project, _count }) do
     Http.fetch(user, project)
+      |> decode_reponse
+  end
+
+  defp decode_reponse({ :ok, body}), do: body
+  defp decode_reponse({ :error, error}) do
+    { _, message } = List.keyfind(error, "message", 0)
+    IO.puts "Error fetching from Github: #{message}"
+    System.halt(2)
   end
 end
