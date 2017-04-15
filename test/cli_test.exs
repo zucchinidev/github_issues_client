@@ -38,10 +38,11 @@ defmodule CliTest do
 
   test "decode response from fetch request" do
     body = "ok!!"
-    error = [ { "message", "error" } ]
     result = decode_response({ :ok, body })
     assert result == body
   end
+
+
 
   defp fake_created_at_list(list) do
     for item <- list do
