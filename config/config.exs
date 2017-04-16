@@ -11,6 +11,7 @@ use Mix.Config
 # You can configure for your application as:
 #
 config :github_issues_client, github_url: "https://api.github.com"
+config :logger, compile_time_purge_level: :info
 #
 # And access this configuration in your application as:
 #
