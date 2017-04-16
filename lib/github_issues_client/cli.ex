@@ -7,7 +7,7 @@ defmodule GithubIssuesClient.CLI do
   that end up generating a table of the last _n_ issues in a github project
   """
 
-  def run(argv) do
+  def main(argv) do
     argv
       |> parse_args
       |> process
