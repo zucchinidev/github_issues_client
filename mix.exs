@@ -5,6 +5,7 @@ defmodule GithubIssuesClient.Mixfile do
     [app: :github_issues_client,
      version: "0.1.0",
      elixir: "~> 1.4",
+     escript: escript_config,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps()]
@@ -32,5 +33,9 @@ defmodule GithubIssuesClient.Mixfile do
       {:httpoison, "~> 0.11.1"},
       {:poison, "~> 3.1"}
     ]
+  end
+
+  defp escript_config do
+    [ main_module: GithubIssuesClient.CLI]
   end
 end
